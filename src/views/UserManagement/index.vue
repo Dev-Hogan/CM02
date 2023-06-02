@@ -15,7 +15,12 @@
 			</el-form>
 		</div>
 		<div class="user-table">
-			<el-table :data="userTable" style="width: 100%">
+			<el-table
+				:data="userTable"
+				:cell-style="{ textAlign: 'center' }"
+				:header-cell-style="{ 'text-align': 'center' }"
+				style="width: 100%"
+			>
 				<el-table-column prop="id" label="ID" />
 				<el-table-column prop="type" label="类型" />
 				<el-table-column prop="openID" label="OpenID" />
@@ -24,6 +29,14 @@
 				<el-table-column prop="avatar" label="头像" />
 				<el-table-column prop="address" label="地区" />
 			</el-table>
+		</div>
+		<div class="example-pagination-block pagination">
+			<el-pagination
+				layout="prev, pager, next"
+				:total="50"
+				v-model:current-page="currentPage"
+				@current-change="handleCurrentChange"
+			/>
 		</div>
 	</div>
 </template>
@@ -46,12 +59,20 @@ type userTable = {
 let userTable = ref<userTable>([])
 let page = ref<Number>(1)
 let limit = ref<Number>(5)
+const currentPage = ref(1)
+
 // 全部列表
 const getList = async () => {
 	const res = await getUserList({ _page: page.value, _limit: limit.value })
 	userTable.value = res as unknown as userTable
 }
 getList()
+// 分页
+const handleCurrentChange = (val: number) => {
+	console.log("当前页", val)
+	page.value = val
+	getList()
+}
 
 const judgeSearch = () => {
 	const reg = /[U4e00-u9fa5]+/g
@@ -92,5 +113,13 @@ const restForm = () => {
 	:deep(.el-input__wrapper) {
 		width: 300px;
 	}
+	.user-table {
+		text-align: center;
+	}
+}
+.pagination {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
 }
 </style>
