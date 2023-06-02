@@ -91,14 +91,23 @@ const login = () => {
 	::v-deep {
 		input,
 		button {
-			background-color: rgba(255, 255, 255, 0.3);
 			border: none;
 			border-radius: 4px;
 			height: 40px;
+			color: #fff;
 		}
+		.el-input__wrapper {
+			background-color: rgba(178, 197, 221, 0.3);
+		}
+		input::placeholder {
+			color: #fff;
+		}
+		// input:focus {
+		// 	background-color: rgba(253, 254, 255, 0.793);
+		// 	color: black;
+		// }
 		button {
 			background-color: #fc8874;
-			color: #fff;
 			&:hover {
 				background-color: #e46b55;
 			}
@@ -108,5 +117,10 @@ const login = () => {
 		flex-grow: 1;
 		width: 100%;
 	}
+}
+
+::v-deep .el-input__wrapper.is-focus {
+	padding-left: 0;
+	padding-right: 0;
 }
 </style>
