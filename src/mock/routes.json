@@ -1,3 +1,4 @@
 {
-    "/user/list":"/userList"
+    "/user/list": "/userList",
+    "/user/list?:key=:value":"/userList?:key=:value"
 }

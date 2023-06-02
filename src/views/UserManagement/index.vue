@@ -6,10 +6,7 @@
 		<div class="user-search">
 			<el-form inline :model="form">
 				<el-form-item>
-					<el-input
-						v-model="form.nickName"
-						placeholder="请输入OpenID或者昵称"
-					/>
+					<el-input v-model="form.query" placeholder="请输入OpenID或者昵称" />
 				</el-form-item>
 				<el-form-item>
 					<el-button type="primary" @click="userSearch">筛选</el-button>
@@ -32,10 +29,10 @@
 </template>
 
 <script lang="ts" setup>
-import { getUserList } from "@/api/user"
-import { reactive } from "vue"
+import { getUserList, searchUsers } from "@/api/user"
+import { reactive, ref } from "vue"
 const form = reactive({
-	nickName: "",
+	query: "",
 })
 type userTable = {
 	id: number
@@ -46,20 +43,43 @@ type userTable = {
 	avatar: string
 	address: string
 }[]
-let userTable: userTable = reactive([])
+let userTable = ref<userTable>([])
+let page = ref<Number>(1)
+let limit = ref<Number>(5)
 // 全部列表
 const getList = async () => {
-	const res = await getUserList()
-	console.log("列表", res)
-	userTable.push(...(res as unknown as userTable))
-	console.log("新列表", userTable)
+	const res = await getUserList({ _page: page.value, _limit: limit.value })
+	userTable.value = res as unknown as userTable
 }
 getList()
 
-const userSearch = () => {
-	console.log("查找", form)
+const judgeSearch = () => {
+	const reg = /[U4e00-u9fa5]+/g
+	const flag = reg.test(form.query)
+	let newForm: { openID?: string; nickname?: string } = {}
+	if (flag) {
+		newForm.openID = form.query
+	} else if (!flag) {
+		newForm.nickname = form.query
+	}
+
+	if (form.query.trim() === "") {
+		getList()
+		return
+	}
+	console.log("判断openID,昵称", newForm)
+	return newForm
+}
+
+const userSearch = async () => {
+	const searchForm = judgeSearch()
+	if (searchForm) {
+		const res = await searchUsers(searchForm)
+		userTable.value = res as unknown as userTable
+	}
 }
 const restForm = () => {
+	form.query = ""
 	console.log("清空表单")
 }
 </script>
