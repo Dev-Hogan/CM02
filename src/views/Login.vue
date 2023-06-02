@@ -123,8 +123,8 @@ const loginForm = async() => {
 	}
 }
 
-::v-deep .el-input__wrapper.is-focus {
-	padding-left: 0;
-	padding-right: 0;
-}
+// ::v-deep .el-input__wrapper.is-focus {
+// 	padding-left: 0;
+// 	padding-right: 0;
+// }
 </style>
