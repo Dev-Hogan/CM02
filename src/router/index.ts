@@ -10,12 +10,12 @@ const routes = [
 		path: "/",
 		name: "home",
 		redirect: "/userList",
-		component: () => import("@/views/Home/index.vue"),
+		component: () => import("@/layout/index.vue"),
 		children: [
 			{
 				path: "userList",
 				name: "userList",
-				component: () => import("@/views/Home/components/UserManagement.vue"),
+				component: () => import("@/views/UserManagement/index.vue"),
 			},
 		],
 	},
