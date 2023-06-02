@@ -1,4 +1,6 @@
 {
     "/user/list": "/userList",
-    "/user/list?:key=:value":"/userList?:key=:value"
+    "/user/list?:key=:value":"/userList?:key=:value",
+    "/category/list":"/category",
+    "/category/list?:key=:value":"/category?:key=:value"
 }

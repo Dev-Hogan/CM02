@@ -18,7 +18,7 @@
 			<el-table
 				:data="userTable"
 				:cell-style="{ textAlign: 'center' }"
-				:header-cell-style="{ 'text-align': 'center' }"
+				:header-cell-style="{ 'text-align': 'center','background-color':'#f2f2f2' }"
 				style="width: 100%"
 			>
 				<el-table-column prop="id" label="ID" />
@@ -57,8 +57,8 @@ type userTable = {
 	address: string
 }[]
 let userTable = ref<userTable>([])
-let page = ref<Number>(1)
-let limit = ref<Number>(5)
+let page = ref<number>(1)
+let limit = ref<number>(5)
 const currentPage = ref(1)
 
 // 全部列表
