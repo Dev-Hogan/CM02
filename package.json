@@ -7,9 +7,10 @@
     "dev": "vite --mode dev",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "mock":"json-server ./src/mock/db.json --watch --port 4090 --routes ./src/mock/routes.json -m ./node_modules/json-server-auth"
+    "mock": "json-server ./src/mock/db.json --watch --port 4090 --routes ./src/mock/routes.json -m ./node_modules/json-server-auth"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "axios": "^1.4.0",
     "element-plus": "^2.3.5",
     "normalize.css": "^8.0.1",
