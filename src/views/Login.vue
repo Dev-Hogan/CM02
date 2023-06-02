@@ -82,7 +82,10 @@ const login = () => {
 		h2 {
 			font-size: 36px;
 			font-weight: bold;
-			// color: #3d5245;
+			color: #424242;
+		}
+		p {
+			color: #666666;
 		}
 	}
 	::v-deep {
@@ -92,7 +95,6 @@ const login = () => {
 			border: none;
 			border-radius: 4px;
 			height: 40px;
-			// color: #3d5245;
 		}
 		button {
 			background-color: #fc8874;
