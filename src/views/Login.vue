@@ -21,7 +21,7 @@
 					/>
 				</el-form-item>
 				<el-form-item>
-					<el-button class="login-form-operation" @click="loginForm"
+					<el-button type="primary" class="login-form-operation" @click="loginForm"
 						>登录</el-button
 					>
 				</el-form-item>
@@ -109,12 +109,12 @@ const loginForm = async () => {
 		// 	background-color: rgba(253, 254, 255, 0.793);
 		// 	color: black;
 		// }
-		button {
-			background-color: #fc8874;
-			&:hover {
-				background-color: #e46b55;
-			}
-		}
+		// button {
+		// 	background-color: #fc8874;
+		// 	&:hover {
+		// 		background-color: #e46b55;
+		// 	}
+		// }
 	}
 	::v-deep &-operation {
 		flex-grow: 1;
