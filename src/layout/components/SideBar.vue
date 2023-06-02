@@ -10,7 +10,7 @@
 							<el-icon><CaretBottom /></el-icon>
 						</template>
 						<el-menu-item-group>
-							<el-menu-item>用户列表</el-menu-item>
+							<el-menu-item @click="$router.push('/userList')">用户列表</el-menu-item>
 						</el-menu-item-group>
 					</el-sub-menu>
 					<el-sub-menu index="2">
@@ -19,8 +19,8 @@
 							<el-icon><CaretBottom /></el-icon>
 						</template>
 						<el-menu-item-group>
-							<el-menu-item>分类管理</el-menu-item>
-							<el-menu-item>游戏管理</el-menu-item>
+							<el-menu-item @click="$router.push('/categoryGame')">分类管理</el-menu-item>
+							<el-menu-item @click="$router.push('/gameManagement')">游戏管理</el-menu-item>
 						</el-menu-item-group>
 					</el-sub-menu>
 				</el-menu>

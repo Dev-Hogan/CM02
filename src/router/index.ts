@@ -17,6 +17,16 @@ const routes = [
 				name: "userList",
 				component: () => import("@/views/UserManagement/index.vue"),
 			},
+			{
+				path: "categoryGame",
+				name: "categoryGame",
+				component: ()=>import("@/views/GameManagement/GameCategory.vue")
+			},
+			{
+				path: 'gameManagement',
+				name: 'gameManagement',
+				component: ()=>import("@/views/GameManagement/GameManagement.vue")
+			}
 		],
 	},
 ]
