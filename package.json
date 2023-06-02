@@ -7,7 +7,7 @@
     "dev": "vite --mode dev",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "mock":"json-server ./src/mock/db.json --watch --port 3040 --routes ./src/mock/routes.json -m ./node_modules/json-server-auth"
+    "mock":"json-server ./src/mock/db.json --watch --port 4090 --routes ./src/mock/routes.json -m ./node_modules/json-server-auth"
   },
   "dependencies": {
     "axios": "^1.4.0",

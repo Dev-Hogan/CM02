@@ -21,7 +21,7 @@
 					/>
 				</el-form-item>
 				<el-form-item>
-					<el-button class="login-form-operation" @click="login"
+					<el-button class="login-form-operation" @click="loginForm"
 						>登录</el-button
 					>
 				</el-form-item>
@@ -32,12 +32,16 @@
 
 <script setup lang="ts">
 import { reactive } from "vue"
+import { login } from "@/api/login"
 const form = reactive({
 	email: "",
 	password: "",
 })
-const login = () => {
+const loginForm = async() => {
 	console.log("登录", form)
+	const res = await login(form)
+	console.log('登录结果', res);
+	
 }
 </script>
 
