@@ -37,11 +37,10 @@ const form = reactive({
 	email: "",
 	password: "",
 })
-const loginForm = async() => {
+const loginForm = async () => {
 	console.log("登录", form)
 	const res = await login(form)
-	console.log('登录结果', res);
-	
+	console.log("登录结果", res)
 }
 </script>
 

@@ -4,16 +4,25 @@ import path from "path"
 import AutoImport from "unplugin-auto-import/vite"
 import Components from "unplugin-vue-components/vite"
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
+// import ElementPlus from "unplugin-element-plus/vite"
 
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [
 		vue(),
 		AutoImport({
-			resolvers: [ElementPlusResolver()],
+			resolvers: [
+				ElementPlusResolver({
+					importStyle: "sass",
+				}),
+			],
 		}),
 		Components({
-			resolvers: [ElementPlusResolver()],
+			resolvers: [
+				ElementPlusResolver({
+					importStyle: "sass",
+				}),
+			],
 		}),
 		// ElementPlus(),
 	],
@@ -22,5 +31,12 @@ export default defineConfig({
 			"@": path.resolve(__dirname, "src"),
 		},
 		extensions: [".js", ".json", ".ts"],
+	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: `@use "@/styles/element/index.scss" as *;`,
+			},
+		},
 	},
 })
