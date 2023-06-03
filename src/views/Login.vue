@@ -38,11 +38,13 @@ import { reactive } from "vue"
 import { useRouter } from "vue-router"
 import bcrypt from "bcryptjs"
 import { login } from "@/api/login"
+import { useStore } from "@/store"
 const form = reactive({
 	email: "",
 	password: "",
 })
 const router = useRouter()
+const store = useStore()
 const loginForm = async () => {
 	console.log("登录", form)
 	const salt = bcrypt.genSaltSync(10)
@@ -54,7 +56,10 @@ const loginForm = async () => {
 		password: bcrypt.hashSync(form.password, salt),
 	})
 	console.log("登录结果", res)
+	store.$patch({token:res.data.accessToken})
+	console.log('pinia', store.token);
 	router.push('/')
+	
 }
 </script>
 
