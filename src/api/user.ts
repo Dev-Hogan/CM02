@@ -2,6 +2,9 @@
 import request from "@/utils/request"
 import { FuzzySearch } from "@/utils/index"
 
+// 用户登录
+export const login = (data: any) => request.post("/login", data)
+
 // 获取用户列表
 export const getUserList = (params: object) => request.get("user/list", { params })
 
