@@ -21,7 +21,10 @@
 					/>
 				</el-form-item>
 				<el-form-item>
-					<el-button type="primary" class="login-form-operation" @click="loginForm"
+					<el-button
+						type="primary"
+						class="login-form-operation"
+						@click="loginForm"
 						>登录</el-button
 					>
 				</el-form-item>
@@ -32,6 +35,7 @@
 
 <script setup lang="ts">
 import { reactive } from "vue"
+import bcrypt from "bcryptjs"
 import { login } from "@/api/login"
 const form = reactive({
 	email: "",
@@ -39,7 +43,14 @@ const form = reactive({
 })
 const loginForm = async () => {
 	console.log("登录", form)
-	const res = await login(form)
+	const salt = bcrypt.genSaltSync(10)
+	console.log(
+		bcrypt.compareSync("123456", bcrypt.hashSync(form.password, salt))
+	)
+	const res = await login({
+		...form,
+		password: bcrypt.hashSync(form.password, salt),
+	})
 	console.log("登录结果", res)
 }
 </script>

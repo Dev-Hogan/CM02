@@ -1,37 +1,40 @@
 // 游戏管理相关接口
 import request from "@/utils/request"
-import { FuzzySearch, addCreateTime } from "@/utils/index"
+import { FuzzySearch, addCreateTime, addUpdateTime } from "@/utils/index"
 
 interface category {
-	id: number
+	id?: number | undefined
 	typeName: string
 	factory: string
-	createTime: string
-	updateTime: string
+	createTime?: string | undefined
+	updateTime?: string | undefined
 }
 
 // 获取分类管理列表
-export const getCategoryList = (params:object) => request.get("category/list", { params})
+export const getCategoryList = (params: object) =>
+	request.get("category/list", { params })
 
 // 获取单个分类详情
-export const getCategoryDetail = (id: string) => request.get(`category/list/${id}`)
+export const getCategoryDetail = (id: string) =>
+	request.get(`category/list/${id}`)
 
 // 编辑分类详情
 export const editCategoryDetail = (data: category) => {
-    
-    request.put(`category/${data.id}`)
+	addUpdateTime(data)
+	request.put(`category/${data.id}`, data)
 }
 
 // 新增分类管理
 export const addCategory = (data: object) => {
-    addCreateTime(data)
-    request.post("category", data)
+	addCreateTime(data)
+	request.post("category", data)
 }
 
 // 编辑分类管理
 
 // 获取游戏列表
-export const getGameList = (params: object) => request.get("game/list", { params })
+export const getGameList = (params: object) =>
+	request.get("game/list", { params })
 
 // 模糊查询游戏列表
 export const searchGame = (data: object) => {

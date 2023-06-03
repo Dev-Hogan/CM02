@@ -38,7 +38,7 @@ export const addCreateTime = (data: category) => {
 	data.updateTime = null
 }
 // 更新时间
-export const updateTime = (data: category) => {
+export const addUpdateTime = (data: category) => {
 	data.updateTime = formatDate(new Date())
 }
 

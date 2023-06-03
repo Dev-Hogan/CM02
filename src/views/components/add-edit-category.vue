@@ -22,14 +22,17 @@
 </template>
 
 <script setup lang="ts">
-import { addCategory, getCategoryDetail } from "@/api/game"
+import { addCategory, getCategoryDetail, editCategoryDetail } from "@/api/game"
 import { useRoute, useRouter } from "vue-router"
 import { reactive, ref } from "vue"
 type form = {
 	typeName: string
 	factory: string
+	createTime?: string
+	updateTime?: string
+	id?: number
 }
-const form = ref({
+const form = ref<form>({
 	typeName: "",
 	factory: "任天堂",
 })
@@ -59,6 +62,9 @@ const save = async () => {
 		console.log("保存", form.value, res)
 		return
 	}
+	const res = await editCategoryDetail(form.value)
+	console.log('修改后的分类', res);
+	router.back()
 	
 }
 const restForm = () => {

@@ -272,11 +272,10 @@
       "id": 6
     },
     {
-      "typeName": "极品飞车",
+      "id": 7,
       "factory": "任天堂",
-      "createTime": "2023-06-03 11-06-15",
-      "updateTime": null,
-      "id": 7
+      "typeName": "极品飞车",
+      "updateTime": "2023-06-03 12-06-15"
     }
   ],
   "gameList": [
