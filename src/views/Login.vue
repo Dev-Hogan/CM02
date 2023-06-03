@@ -36,7 +36,7 @@
 <script setup lang="ts">
 import { reactive } from "vue"
 import { useRouter } from "vue-router"
-import { useStore } from "@/store"
+import { useStore } from "@/stores"
 const form = reactive({
 	email: "",
 	password: "",
@@ -45,9 +45,9 @@ const router = useRouter()
 const store = useStore()
 const loginForm = async () => {
 	console.log("登录", form)
-	store.Login(form)
-	console.log('pinia', store.token);
-	router.push('/')
+	await store.Login(form)
+	console.log("pinia", store.token)
+	router.push("/")
 }
 </script>
 
