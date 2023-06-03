@@ -30,7 +30,7 @@ const formatDate = (data: Date) => {
 	const second = data.getSeconds()
 	const zeroFill = [month, day, hour, minute, second]
 	const fillDate = zeroFill.map(item=>item<10?`0${item}`:item)
-	return `${year}-${fillDate[0]}-${fillDate[1]} ${fillDate[2]}-${fillDate[3]}-${fillDate[4]}`
+	return `${year}-${fillDate[0]}-${fillDate[1]} ${fillDate[2]}:${fillDate[3]}:${fillDate[4]}`
 }
 // 创建时间
 export const addCreateTime = (data: category) => {

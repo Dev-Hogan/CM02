@@ -234,48 +234,35 @@
       "typeName": "Switch",
       "factory": "任天堂",
       "createTime": "2021-07-15 12:12:12",
-      "updateTime": "2021-07-15 12:12:13"
+      "updateTime": "2023-06-03 15:14:34"
     },
     {
       "id": 2,
       "typeName": "PS4",
       "factory": "索尼PlayStation",
       "createTime": "2021-07-15 12:12:12",
-      "updateTime": "2021-07-15 12:12:13"
+      "updateTime": "2023-06-03 15:14:55"
     },
     {
       "id": 3,
       "typeName": "PS5",
       "factory": "索尼PlayStation",
       "createTime": "2021-07-15 12:12:12",
-      "updateTime": "2021-07-15 12:12:13"
+      "updateTime": "2023-06-03 15:15:51"
     },
     {
       "typeName": "星之卡比2",
-      "factory": "任天堂",
+      "factory": "索尼PlayStation",
       "createTime": "2023-06-01 10:33:26",
-      "updateTime": "2023-06-01 11:09:45",
+      "updateTime": "2023-06-03 15:12:04",
       "id": 4
     },
     {
-      "typeName": "龙息2",
-      "factory": "任天堂",
-      "createTime": "2023-06-01 10:33:57",
-      "updateTime": "2023-06-01 11:08:48",
-      "id": 5
-    },
-    {
-      "typeName": "街头霸王6",
+      "typeName": "555",
       "factory": "索尼PlayStation",
-      "createTime": "2023-06-01 11:10:05",
-      "updateTime": "2023-06-01 11:10:05",
-      "id": 6
-    },
-    {
-      "id": 7,
-      "factory": "任天堂",
-      "typeName": "极品飞车",
-      "updateTime": "2023-06-03 12-06-15"
+      "createTime": "2023-06-03 15:12:36",
+      "updateTime": "2023-06-03 15:15:03",
+      "id": 5
     }
   ],
   "gameList": [

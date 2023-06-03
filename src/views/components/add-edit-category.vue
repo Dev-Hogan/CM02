@@ -59,13 +59,13 @@ const save = async () => {
 	await addForm.value.validate()
 	if (!params.id) {
 		const res = await addCategory(form.value)
-		console.log("保存", form.value, res)
-		return
+		console.log("新增保存", form.value, res)
+		router.back()
+	} else {
+		const res = await editCategoryDetail(form.value)
+		console.log("修改后的分类", res)
+		router.back()
 	}
-	const res = await editCategoryDetail(form.value)
-	console.log('修改后的分类', res);
-	router.back()
-	
 }
 const restForm = () => {
 	addForm.value.resetFields()

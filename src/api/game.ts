@@ -30,7 +30,8 @@ export const addCategory = (data: object) => {
 	request.post("category", data)
 }
 
-// 编辑分类管理
+// 删除分类管理
+export const delateCategory = (id: number) => request.delete(`category/list/${id}`)
 
 // 获取游戏列表
 export const getGameList = (params: object) =>
