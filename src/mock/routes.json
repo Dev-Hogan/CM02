@@ -2,6 +2,7 @@
     "/user/list": "/userList",
     "/user/list?:key=:value": "/userList?:key=:value",
     "/category/list": "/category",
+    "/category/list/:id": "/category/:id",
     "/category/list?:key=:value": "/category?:key=:value",
     "/game/list": "/gameList",
     "/game/list?:key=:value": "/gameList?:key=:value"

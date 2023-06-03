@@ -20,13 +20,18 @@ const routes = [
 			{
 				path: "categoryGame",
 				name: "categoryGame",
-				component: ()=>import("@/views/GameManagement/GameCategory.vue")
+				component: () => import("@/views/GameManagement/GameCategory.vue"),
 			},
 			{
-				path: 'gameManagement',
-				name: 'gameManagement',
-				component: ()=>import("@/views/GameManagement/GameManagement.vue")
-			}
+				path: "addCategory/:id",
+				name: "addCategory",
+				component: () => import("@/views/components/add-edit-category.vue"),
+			},
+			{
+				path: "gameManagement",
+				name: "gameManagement",
+				component: () => import("@/views/GameManagement/GameManagement.vue"),
+			},
 		],
 	},
 ]

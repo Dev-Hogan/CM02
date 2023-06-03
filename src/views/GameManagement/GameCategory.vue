@@ -3,7 +3,7 @@
 		<client-header title="游戏管理" sub-title="分类管理" />
 	</div>
 	<div class="category-add">
-		<el-button type="primary">新增</el-button>
+		<el-button type="primary" @click="$router.push('/addCategory')">新增</el-button>
 	</div>
 	<div class="category-table">
 		<el-table
@@ -20,8 +20,8 @@
 			<el-table-column prop="factory" label="所属厂家" />
 			<el-table-column prop="createTime" label="创建时间" />
 			<el-table-column prop="updateTime" label="更新时间" />
-			<el-table-column label="操作">
-				<el-button type="primary">编辑</el-button> 
+			<el-table-column label="操作" #default="{row}">
+				<el-button type="primary" @click="$router.push(`/addCategory/${row.id}`)">编辑</el-button> 
             </el-table-column>
 		</el-table>
 	</div>
