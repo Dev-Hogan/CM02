@@ -21,7 +21,7 @@
 			<el-table-column prop="createTime" label="创建时间" />
 			<el-table-column prop="updateTime" label="更新时间" />
 			<el-table-column label="操作">
-				<el-button type="link">编辑</el-button> 
+				<el-button type="primary">编辑</el-button> 
             </el-table-column>
 		</el-table>
 	</div>
