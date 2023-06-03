@@ -232,9 +232,9 @@
     {
       "id": 1,
       "typeName": "Switch",
-      "factory": "任天堂",
+      "factory": "索尼PlayStation",
       "createTime": "2021-07-15 12:12:12",
-      "updateTime": "2023-06-03 15:14:34"
+      "updateTime": "2023-06-03 15:20:20"
     },
     {
       "id": 2,
@@ -263,6 +263,20 @@
       "createTime": "2023-06-03 15:12:36",
       "updateTime": "2023-06-03 15:15:03",
       "id": 5
+    },
+    {
+      "typeName": "6666",
+      "factory": "任天堂",
+      "createTime": "2023-06-03 15:20:42",
+      "updateTime": "2023-06-03 15:21:52",
+      "id": 6
+    },
+    {
+      "typeName": "3333",
+      "factory": "索尼PlayStation",
+      "createTime": "2023-06-03 15:22:16",
+      "updateTime": "2023-06-03 15:22:19",
+      "id": 7
     }
   ],
   "gameList": [

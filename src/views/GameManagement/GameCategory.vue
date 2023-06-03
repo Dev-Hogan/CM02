@@ -54,9 +54,7 @@ const getList = async () => {
 	
 	categoryTable.value = res as unknown as categoryTable
 }
-setTimeout(() => {
-	getList()
-}, 200)
+getList()
 	
 
 const delCategory = async (id: number) => {
