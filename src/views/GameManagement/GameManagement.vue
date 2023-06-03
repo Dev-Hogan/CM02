@@ -79,7 +79,7 @@
 	<div class="example-pagination-block pagination">
 		<el-pagination
 			layout="prev, pager, next"
-			:total="50"
+			:total="+total"
 			v-model:current-page="currentPage"
 			@current-change="handleCurrentChange"
 		/>
@@ -89,7 +89,6 @@
 <script setup lang="ts">
 import { getGameList, searchGame } from "@/api/game"
 import { reactive, ref } from "vue"
-// import { FormInstance} from 'element-plus'
 const form = ref({
 	gameName: "",
 	classify: "",
@@ -135,13 +134,15 @@ let gameTable = ref<gameTable>([])
 let page = ref<number>(1)
 let limit = ref<number>(5)
 const currentPage = ref(1)
+let total = ref(0)
 const getList = async () => {
 	const res = await getGameList({
 		_page: page.value,
 		_limit: limit.value,
 	})
+	total.value = res.headers['x-total-count']
 	console.log("游戏列表", res)
-	gameTable.value = res as unknown as gameTable
+	gameTable.value = res.data as unknown as gameTable
 }
 getList()
 // 分页
@@ -151,13 +152,11 @@ const handleCurrentChange = (val: number) => {
 	getList()
 }
 const userSearch = async () => {
-	const res = await searchGame(form)
-	console.log('查找的值', res);
-	gameTable.value = res as unknown as gameTable
+	const res = await searchGame(form.value)
+	gameTable.value = res.data as unknown as gameTable
 }
 const restForm = () => {
 	gameForm.value.resetFields()
-	console.log("清空表单")
 }
 </script>
 

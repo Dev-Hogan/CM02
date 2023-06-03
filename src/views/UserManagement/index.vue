@@ -33,7 +33,7 @@
 		<div class="example-pagination-block pagination">
 			<el-pagination
 				layout="prev, pager, next"
-				:total="50"
+				:total="+total"
 				v-model:current-page="currentPage"
 				@current-change="handleCurrentChange"
 			/>
@@ -60,11 +60,12 @@ let userTable = ref<userTable>([])
 let page = ref<number>(1)
 let limit = ref<number>(5)
 const currentPage = ref(1)
-
+let total = ref(0)
 // 全部列表
 const getList = async () => {
 	const res = await getUserList({ _page: page.value, _limit: limit.value })
-	userTable.value = res as unknown as userTable
+	userTable.value = res.data as unknown as userTable
+	total.value = res.headers['x-total-count']
 }
 getList()
 // 分页
@@ -76,12 +77,12 @@ const handleCurrentChange = (val: number) => {
 
 const judgeSearch = () => {
 	const reg = /[U4e00-u9fa5]+/g
-	const flag = reg.test(form.query)
+	const flag = reg.test(form.query.trim())
 	let newForm: { openID?: string; nickname?: string } = {}
 	if (flag) {
-		newForm.openID = form.query
+		newForm.openID = form.query.trim()
 	} else if (!flag) {
-		newForm.nickname = form.query
+		newForm.nickname = form.query.trim()
 	}
 
 	if (form.query.trim() === "") {
@@ -96,7 +97,10 @@ const userSearch = async () => {
 	const searchForm = judgeSearch()
 	if (searchForm) {
 		const res = await searchUsers(searchForm)
-		userTable.value = res as unknown as userTable
+		userTable.value = res.data as unknown as userTable
+		console.log('筛选', res);
+		
+		total.value = res.data.length
 	}
 }
 const restForm = () => {

@@ -42,6 +42,7 @@ const rules = reactive({
 		{ required: true, message: "请输入游戏分类名称", trigger: "blur" },
 	],
 })
+
 // 判断新增/编辑
 const { params } = useRoute()
 const router = useRouter()

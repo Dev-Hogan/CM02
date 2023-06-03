@@ -32,6 +32,14 @@
 			</el-table-column>
 		</el-table>
 	</div>
+	<div class="example-pagination-block pagination">
+		<el-pagination
+			layout="prev, pager, next"
+			:total="+total"
+			v-model:current-page="currentPage"
+			@current-change="handleCurrentChange"
+		/>
+	</div>
 </template>
 
 <script setup lang="ts">
@@ -47,15 +55,24 @@ type categoryTable = {
 let categoryTable = ref<categoryTable>([])
 let page = ref<number>(1)
 let limit = ref<number>(10)
+const currentPage = ref(1)
+let total = ref<number>(0)
 
 const getList = async () => {
 	const res = await getCategoryList({ _page: page.value, _limit: limit.value })
-	console.log('列表加载', res);
+	console.log("列表加载", res)
+	total.value = res.headers['x-total-count']
+	console.log('总数', total.value);
 	
-	categoryTable.value = res as unknown as categoryTable
+	categoryTable.value = res.data as unknown as categoryTable
 }
 getList()
-	
+// 分页
+const handleCurrentChange = (val: number) => {
+	console.log("当前页", val)
+	page.value = val
+	getList()
+}
 
 const delCategory = async (id: number) => {
 	await delateCategory(id)
@@ -71,5 +88,11 @@ const delCategory = async (id: number) => {
 }
 .category-table {
 	margin-top: 20px;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
 }
 </style>
