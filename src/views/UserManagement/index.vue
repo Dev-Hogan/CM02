@@ -18,7 +18,10 @@
 			<el-table
 				:data="userTable"
 				:cell-style="{ textAlign: 'center' }"
-				:header-cell-style="{ 'text-align': 'center','background-color':'#f2f2f2' }"
+				:header-cell-style="{
+					'text-align': 'center',
+					'background-color': '#f2f2f2',
+				}"
 				style="width: 100%"
 			>
 				<el-table-column prop="id" label="ID" />
@@ -44,6 +47,7 @@
 <script lang="ts" setup>
 import { getUserList, searchUsers } from "@/api/user"
 import { reactive, ref } from "vue"
+import { useStore } from "@/stores/index"
 const form = reactive({
 	query: "",
 })
@@ -65,8 +69,11 @@ let total = ref(0)
 const getList = async () => {
 	const res = await getUserList({ _page: page.value, _limit: limit.value })
 	userTable.value = res.data as unknown as userTable
-	total.value = res.headers['x-total-count']
+	total.value = res.headers["x-total-count"]
 }
+const store = useStore()
+console.log("首页token", store.token)
+
 getList()
 // 分页
 const handleCurrentChange = (val: number) => {
@@ -98,8 +105,8 @@ const userSearch = async () => {
 	if (searchForm) {
 		const res = await searchUsers(searchForm)
 		userTable.value = res.data as unknown as userTable
-		console.log('筛选', res);
-		
+		console.log("筛选", res)
+
 		total.value = res.data.length
 	}
 }

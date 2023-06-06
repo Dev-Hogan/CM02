@@ -48,6 +48,7 @@ const loginForm = async () => {
 	await store.Login(form)
 	console.log("pinia", store.token)
 	router.push("/")
+	console.log('进去')
 }
 </script>
 

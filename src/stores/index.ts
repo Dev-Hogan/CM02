@@ -4,12 +4,12 @@ import { setToken, getToken } from "@/utils/auth"
 import bcrypt from "bcryptjs"
 
 interface loginForm {
-    email: string,
-    password: string
+	email: string
+	password: string
 }
 
 export const useStore = defineStore("main", {
-	state: () => {
+	state:  () => {
 		return {
 			token: getToken(),
 		}
@@ -21,8 +21,10 @@ export const useStore = defineStore("main", {
 				...form,
 				password: bcrypt.hashSync(form.password, salt),
 			})
-			this.token = res.data.accessToken
-			setToken(this.token as string)
+			this.token =  res.data.accessToken as unknown as string
+			console.log('登录存的token', this.token);
+			
+			setToken(this.token as unknown as string)
 		},
 	},
 })
